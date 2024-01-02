@@ -12,7 +12,7 @@ del file sciame_def.py'). Per eseguire la simulazione si può procedere come seg
     energia critica dei materiali, perdita di energia per ionizzazione, passo di avanzamento 
     e lunghezza di radiazione del materiale.
 
-    - nello scirpt è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
+    - nello script è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
     indicati nella richiesta e ricavati dal particle data group.
 
     - l'utente può liberamente cambiare tali parametri.
@@ -28,4 +28,3 @@ Nella repository è inoltre presente un file .pdf che mi è stato utile nella re
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
 risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
 e i parametri che possono essere variati.
-
