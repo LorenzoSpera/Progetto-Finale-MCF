@@ -15,9 +15,9 @@ classi che definiscono le particelle e una classe sciame in cui viene realizzata
 ### Esecuzione simulazione 
 
 Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
-tramite la libreria _$sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando _sys.path.append('path
+tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando _sys.path.append('path
 del file sciame_def.py')_. Per eseguire la simulazione si può procedere come segue:
-1. si scelgono i parametri della simulazione, tipo della particella inziale, 
+1. si scelgono i parametri della simulazione, tipo della particella iniziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
 2. nello script è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
@@ -31,7 +31,8 @@ del file sciame_def.py')_. Per eseguire la simulazione si può procedere come se
 ### Analisi dei risultati
 
 Nell'ultima parte è presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
-si consiglia di inserire 0 ogni volta che viene chiesto se si voglioni visualizzare i risultati.
+si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati. Eccetto quando viene esplicitamente
+citato il confronto tra le simulazioni.
 Nella repository è inoltre presente un file .pdf che mi è stato utile nella realizzazione della simulazione (per tenere conto
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
 risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
