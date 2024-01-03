@@ -2,17 +2,17 @@
 **CONTENUTO:**
 
 Repository contente il progetto finale del corso di Metodi Computazionali per la Fisica (2023-2024) consistente nella simulazione
-di uno sciame elettromagnetico partendo dal modello di Rossi. All'interno del repository sono presenti due script python: 'sciame_def.py'
-e 'run_sciame.py'. Nel primo si trova la defizione delle varie classi usate per la realizzazione della simulazione; ovvero si hanno le 
+di uno sciame elettromagnetico partendo dal modello di Rossi. All'interno del repository sono presenti due script python: '#sciame_def.py'
+e '#run_sciame.py'. Nel primo si trova la defizione delle varie classi usate per la realizzazione della simulazione; ovvero si hanno le 
 classi che definiscono le particelle e una classe sciame in cui viene realizzata la simulazione secondo il modello richiesto. 
 
 **ESECUZIONE DELLA SIMULAZIONE:**
 
 Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
-tramite la libreria 'sys'. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando 'sys.path.append('path
-del file sciame_def.py')'. Per eseguire la simulazione si può procedere come segue:
+tramite la libreria '#sys'. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando '#sys.path.append('path
+del file sciame_def.py')'. Per eseguire la simulazione si può procedere come segue
 
-    * si scelgono i parametri della simulazione, tipo della particella inziale, 
+     si scelgono i parametri della simulazione, tipo della particella inziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
 
@@ -34,3 +34,4 @@ Nella repository è inoltre presente un file .pdf che mi è stato utile nella re
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
 risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
 e i parametri che possono essere variati.
+
