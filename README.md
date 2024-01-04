@@ -8,7 +8,7 @@
 ### Contenuto
 
 Repository contente il progetto finale del corso di Metodi Computazionali per la Fisica (2023-2024) consistente nella simulazione
-di uno sciame elettromagnetico partendo dal modello di Rossi. All'interno del repository sono presenti due script python: _bash sciame_def.py_
+di uno sciame elettromagnetico partendo dal modello di Rossi. All'interno del repository sono presenti due script python: _sciame_def.py_
 e _run_sciame.py_. Nel primo si trova la defizione delle varie classi usate per la realizzazione della simulazione; ovvero si hanno le 
 classi che definiscono le particelle e una classe sciame in cui viene realizzata la simulazione secondo il modello richiesto. 
 
