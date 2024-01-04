@@ -24,8 +24,9 @@ import numpy as np
 import sys, os 
 import matplotlib.pyplot as plt
 
-sys.path.append('/Users/lorenzospera/Desktop/sciame_def.py')  # inserire il path del file sciame_def.py
+sys.path.append('/Users/lorenzospera/Desktop/Terzo_anno/MCF/github/Progetto-Finale-MCF/sciame_def.py')  # inserire il path del file sciame_def.py
 
+# importare il modulo
 import sciame_def
 from sciame_def import sciame_elettromagnetico
 
