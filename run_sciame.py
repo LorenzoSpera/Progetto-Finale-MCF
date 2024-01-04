@@ -38,6 +38,12 @@ Valori di partenza scelti dall'utente:
     - energia critica del materiale
     - lunghezza di radiazione del materiale
     - passo di avanzamento (compreso tra 0 e 1)
+
+    N.B = per ottimizzare la simulazione si consiglia di utilizzare dei valori per l'energia iniziale sufficientemente alti,
+    ovvero dalle centinaia di MeV. Si tenga poi conto del fatto che la perdita di energia è proporzionale al passo di avanzamento s
+    ; scegliendo s grande (sempre tra 0 e 1 ) aumenta la probabilità di produzione di coppia e di emissione (e quindi il numero di 
+    particelle), ma, essendo la perdita di energia proporzionale ad s, questa sarà altrettanto grande e la simulazione 
+    si arresta più velocemente.
 """
 
 tipo_particella_iniziale  = 'Elettrone'     # selezionare il tipo di particella iniziale: 'Elettrone', 'Positrone', 'Fotone'
