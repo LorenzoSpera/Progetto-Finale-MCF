@@ -43,7 +43,7 @@ e i parametri che possono essere variati.
 
 Per la visualizzazione delle grandezze richieste è stata utilizzata la libreria _rich_ di Python. Se tale libreria non dovesse già essere installata
 ci si sposti nella cartella di lavoro e si proceda con l'installazione da terminale secondo il seguente comando:
-"""
+```
 pip install rich
-"""
+```
 Per l'installazione si richiede una versione di Python dalla 3.7 in poi.
