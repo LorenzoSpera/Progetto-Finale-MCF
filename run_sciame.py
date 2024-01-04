@@ -103,6 +103,13 @@ tipo_particella_2 = 'Elettrone' # selezionare il tipo di particella iniziale: 'E
 print('-------------------------------------------------------------------------------------------')
 confronto_sciame = int(input("1 se si vuole effettuare il confronto a partire da energie diverse. 0 altrimenti: "))
 if (confronto_sciame==1):
+
+    """
+    chiaramente deve essere inizializzata un'istanza sciame tramite la classe sciame_elettromagnetico,
+    tale inizializzazione avviene con dei valori specifici. In ogni caso viene richiamato solo il 
+    metodo confronta sciame che mette a confronto tra di loro le simulazioni i cui parametri vengono
+    specificati all'interno di quest'ultimo metodo e non quella dell'inizializzazione della classe.
+    """
     confronta_sciame = sciame_elettromagnetico(tipo_particella = tipo_particella_iniziale, E0 = 50000, 
                                             Ec_elettroni= energia_critica_elettroni_h2O,
                                             Ec_positroni=energia_critica_positroni_h2O
