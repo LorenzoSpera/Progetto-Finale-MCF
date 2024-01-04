@@ -17,15 +17,15 @@ classi che definiscono le particelle e una classe sciame in cui viene realizzata
 Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
 tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando _sys.path.append('path
 del file sciame_def.py')_. Per eseguire la simulazione si può procedere come segue:
-1. si scelgono i parametri della simulazione, tipo della particella iniziale, 
+* si scelgono i parametri della simulazione, tipo della particella iniziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
-2. nello script è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
+* nello script è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
     indicati nella richiesta e ricavati dal particle data group.
-3. l'utente può liberamente cambiare tali parametri.
-4. una volta eseguita la simulazione viene stampata l'energia persa per ionizzazione dopo l'intero processo e 
+* l'utente può liberamente cambiare tali parametri.
+* una volta eseguita la simulazione viene stampata l'energia persa per ionizzazione dopo l'intero processo e 
     le grandezze richieste vengono riportate in una tabella. 
-5. tali grandezze vengono studiate anche graficamente con l'aggiunta di alcuni grafici per analizzare a pieno il
+* tali grandezze vengono studiate anche graficamente con l'aggiunta di alcuni grafici per analizzare a pieno il
     fenomeno fisico. Viene specificato il contenuto di ogni grafico e viene chiesto all'utente se vuole visualizzarlo
     inserendo il rispettivo comando indicato.
 ### Analisi dei risultati
