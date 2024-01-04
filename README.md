@@ -31,7 +31,7 @@ del file sciame_def.py')_. Per eseguire la simulazione si può procedere come se
 ### Analisi dei risultati
 
 Nell'ultima parte è presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
-si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati. Eccetto quando viene esplicitamente
+si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati eccetto quando viene esplicitamente
 citato il confronto tra le simulazioni.
 Nella repository è inoltre presente un file .pdf che mi è stato utile nella realizzazione della simulazione (per tenere conto
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
