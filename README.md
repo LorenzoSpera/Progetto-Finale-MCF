@@ -4,6 +4,7 @@
 1. [Contenuto](#contenuto)
 2. [Esecuzione simulazione](#esecuzionesimulazione)
 3. [Analisi dei risultati](#analisirisultati)
+4. [Installazione pacchetti](#installazione)
 
 ### Contenuto
 
@@ -37,3 +38,12 @@ Nella repository è inoltre presente un file .pdf che mi è stato utile nella re
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
 risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
 e i parametri che possono essere variati.
+
+### Installazione pacchetti
+
+Per la visualizzazione delle grandezze richieste è stata utilizzata la libreria _rich_ di Python. Se tale libreria non dovesse già essere installata
+ci si sposti nella cartella di lavoro e si proceda con l'installazione da terminale secondo il seguente comando:
+"""
+pip install rich
+"""
+Per l'installazione si richiede una versione di Python dalla 3.7 in poi.
