@@ -16,8 +16,8 @@ classi che definiscono le particelle e una classe sciame in cui viene realizzata
 ### Esecuzione simulazione 
 
 Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
-tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando ```_sys.path.append('path
-del file sciame_def.py')_```. Per eseguire la simulazione si può procedere come segue:
+tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando ```sys.path.append('path
+del file sciame_def.py')```. Per eseguire la simulazione si può procedere come segue:
 * si scelgono i parametri della simulazione, tipo della particella iniziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
