@@ -13,7 +13,11 @@
 # sciame_elettromagnetico con il metodo init che        #
 # prende  in input i vari parametri e il metodo         #
 # simula_sciame che simula lo sciame elettromagneti     #
-# co restituendo le grandezze richieste                 # 
+# co restituendo le grandezze richieste. E' inoltre     #      
+# presente il metodo confronta sciame che, a partire    #
+# dal metodo return array, esegue il confronto tra      #  
+# simulazionoi partendo da 3 energie diverse impostate  #
+# dall'utente.                                          # 
 #########################################################
 
 import numpy as np 
