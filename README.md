@@ -46,4 +46,4 @@ ci si sposti nella cartella di lavoro e si proceda con l'installazione da termin
 ```
 pip install rich
 ```
-Per l'installazione si richiede una versione di Python dalla 3.7 in poi.
+Per l'installazione si richiede una versione di Python pari o superiore alla 3.7.
