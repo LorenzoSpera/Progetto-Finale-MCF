@@ -1,25 +1,25 @@
-#########################################################
-# Lorenzo Spera (lorenzo.spera@studenti.unipg.it)       #
-#                                                       #
-# Universià degli Studi di Perugia                      #
-# Corso di Metodi Computazionali per la Fisica          #
-#---------------------------------------------------    #
-# Progetto finale: Simulazione di uno sciame em         #
-#                                                       #
-# Script che implementa la simulazione realizzata       #
-# nello script sciame_def.py. L'utente può selezionare  #
-# i diversi parametri specificati nella simulazione e   #
-# confrontare i risultati graficamente. La simulazione  #
-# restituisce le grandezze richieste in una tabella e   #
-# l'utente può decidere o meno se visualizzare i risulta#
-# dal punto di vista grafico. Nello script è presente   #
-# una simulazione per il materiale acqua e uno per il   #
-# materiale silicato di bismuto. L'utente può cambiare  #
-# liberamente i valori ed eseguire varie simulazioni.   #
-# Nella parte finale si trova il confronto per lo       #
-# sviluppo dello sciame a partire da diversi valori     #
-# dell'energia iniziale                                 #
-#########################################################
+##########################################################
+# Lorenzo Spera (lorenzo.spera@studenti.unipg.it)        #
+#                                                        #
+# Universià degli Studi di Perugia                       #
+# Corso di Metodi Computazionali per la Fisica           # 
+#---------------------------------------------------     #
+# Progetto finale: Simulazione di uno sciame em          #
+#                                                        #
+# Script che implementa la simulazione realizzata        #
+# nello script sciame_def.py. L'utente può selezionare   #
+# i diversi parametri specificati nella simulazione e    #
+# confrontare i risultati graficamente. La simulazione   #
+# restituisce le grandezze richieste in una tabella e    #
+# l'utente può decidere o meno se visualizzare i risulta #
+# ti dal punto di vista grafico. Nello script è presente #
+# una simulazione per il materiale acqua e uno per il    #
+# materiale silicato di bismuto. L'utente può cambiare   #
+# liberamente i valori ed eseguire varie simulazioni.    #
+# Nella parte finale si trova il confronto per lo        #
+# sviluppo dello sciame a partire da diversi valori      #
+# dell'energia iniziale                                  #
+##########################################################
 import numpy as np 
 import sys, os 
 import matplotlib.pyplot as plt
@@ -34,7 +34,6 @@ from sciame_def import sciame_elettromagnetico
 """
 Valori di partenza scelti dall'utente:
     - energia iniziale 
-    - passo di avanzamento
     - energia critica del materiale
     - lunghezza di radiazione del materiale
     - passo di avanzamento (compreso tra 0 e 1)
