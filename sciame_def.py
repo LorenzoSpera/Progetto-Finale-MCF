@@ -9,7 +9,7 @@
 # Script contenente la definizione delle classi che     #
 # vengono create all'interno dello sciame: elettroni,   #
 # fotoni e positroni specificando l'energia della       #
-# parricella. Lo script contiene anche la classe        #                 
+# particella. Lo script contiene anche la classe        #                 
 # sciame_elettromagnetico con il metodo init che        #
 # prende  in input i vari parametri e il metodo         #
 # simula_sciame che simula lo sciame elettromagneti     #
