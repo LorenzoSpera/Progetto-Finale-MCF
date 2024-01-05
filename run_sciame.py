@@ -104,15 +104,10 @@ confronto_sciame = int(input("1 se si vuole effettuare il confronto a partire da
 if (confronto_sciame==1):
 
     """
-    chiaramente deve essere inizializzata un'istanza sciame tramite la classe sciame_elettromagnetico,
-    tale inizializzazione avviene con dei valori specifici. In ogni caso viene richiamato solo il 
-    metodo confronta sciame che mette a confronto tra di loro le simulazioni i cui parametri vengono
-    specificati all'interno di quest'ultimo metodo e non quella dell'inizializzazione della classe.
+    viene richiamato il metodo confronta sciame che mette a confronto tra di loro le simulazioni i cui parametri vengono
+    specificati all'interno di quest'ultimo metodo. L'utente può sempre cambiare suddetti parametri.
     """
-    confronta_sciame = sciame_elettromagnetico(tipo_particella = tipo_particella_iniziale, E0 = 50000, 
-                                            Ec_elettroni= energia_critica_elettroni_h2O,
-                                            Ec_positroni=energia_critica_positroni_h2O
-                                            ,dEx0 = perdita_per_ionizzazione_h2O, s = passo_utente, X0 = lunghezza_radiazione_h2O)
+                                            
     sciame_elettromagnetico.confronta_sciame(tipo_particella = tipo_particella_2, E00 = energia_0, E01 = energia_1, E02 = energia_2,
                                             Ec_elettroni_h20 = energia_critica_elettroni_h2O, Ec_positroni_h20 = energia_critica_positroni_h2O,
                                             Ec_elettroni_bso = energia_critica_elettroni_bso, Ec_positroni_bso = energia_critica_positroni_bso,
