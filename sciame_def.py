@@ -576,7 +576,7 @@ class sciame_elettromagnetico:
             ax[0][0].plot(step3[:-1], num3, "--", c='limegreen')
             ax[0][0].plot(step3[:-1], num3, "+", c='magenta',label='$E_0$ = {:.2f} MeV'.format(E02))
 
-            #ax[0][0].set_title("Andamento del numero di particelle per diverse energie iniziali")
+            
             ax[0][0].set_xlabel('Numero di step')
             ax[0][0].set_ylabel('Numero di particelle per H2O')
             ax[0][0].legend(loc = 'upper left')
@@ -594,7 +594,7 @@ class sciame_elettromagnetico:
             ax[0][1].plot(step3[:-1], energia3, "--", c='limegreen')
             ax[0][1].plot(step3[:-1], energia3, "+", c='magenta',label='$E_0$ = {:.2f} MeV'.format(E02))
 
-            #ax[0][1].set_title("Andamento dell'energia depositata per diverse energie iniziali")
+            
             ax[0][1].set_xlabel('Numero di step')
             ax[0][1].set_ylabel('Energia depositata(MeV) per H2O')
             ax[0][1].legend(loc = 'upper left')
@@ -614,7 +614,7 @@ class sciame_elettromagnetico:
             ax[1][0].plot(step6[:-1], num6, "--", c='limegreen')
             ax[1][0].plot(step6[:-1], num6, "+", c='magenta',label='$E_0$ = {:.2f} MeV'.format(E02))
 
-            #ax[1][0].set_title("Andamento del numero di particelle per diverse energie iniziali")
+            
             ax[1][0].set_xlabel('Numero di step')
             ax[1][0].set_ylabel('Numero di particelle per BSO')
             ax[1][0].legend(loc = 'upper left')
