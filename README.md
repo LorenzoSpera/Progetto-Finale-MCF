@@ -17,7 +17,7 @@ classi che definiscono le particelle e una classe sciame in cui viene realizzata
 
 Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
 tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando ```sys.path.append('path
-del file sciame_def.py')```. Per eseguire la simulazione si può procedere come segue:
+del file sciame_def.py')```.Per eseguire la simulazione si può procedere come segue:
 * si scelgono i parametri della simulazione, tipo della particella iniziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
@@ -30,8 +30,8 @@ del file sciame_def.py')```. Per eseguire la simulazione si può procedere come 
     fenomeno fisico. Viene specificato il contenuto di ogni grafico e viene chiesto all'utente se vuole visualizzarlo
     inserendo il rispettivo comando indicato.
 ### Analisi dei risultati
-
-Nell'ultima parte è presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
+Nello script _sciame_def.py_ sono già presenti alcune simulazioni con dei valori specifici.
+Nell'ultima parte è poi presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
 si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati eccetto quando viene esplicitamente
 citato il confronto tra le simulazioni.
 Nella repository è inoltre presente un file .pdf che mi è stato utile nella realizzazione della simulazione (per tenere conto
