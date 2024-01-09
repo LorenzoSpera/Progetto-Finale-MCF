@@ -37,7 +37,8 @@ Nella repository è inoltre presente un file .pdf che mi è stato utile nella re
 dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
 risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
 e i parametri che possono essere variati. Dato che il codice è stato aggiornato, per effettuare un confronto con i nuovi risultati, 
-è stata aggiunta una sezione al file .pdf rimuovendone due relative alla simulazione del codice non aggiornato.
+è stata aggiunta una sezione al file .pdf rimuovendone due relative alla simulazione del codice non aggiornato che riporava
+alcune inconsistenze.
 
 ### Installazione pacchetti
 
