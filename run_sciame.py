@@ -60,7 +60,7 @@ energia_critica_elettroni_bso = 10.68   # in MeV
 energia_critica_positroni_bso = 10.32   # in Mev 
 
 
-# simulazione di una particella (tipo_particella) con energia E0 che genera lo sciame con parametri scelti dall'utente e quelli dei due materiali + simulazione aggiuntiva
+# simulazione di una particella (tipo_particella) con energia E0 che genera lo sciame con parametri scelti dall'utente e quelli dei due materiali 
 
 """
 Per la simulazione sciame utente, si è scelto un valore della perdita di energia molto più basso rispetto a quello dei materiali per 
