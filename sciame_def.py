@@ -25,8 +25,8 @@ from scipy import constants
 from rich.console import Console
 from rich.table import Table
 import matplotlib.pyplot as plt
-import scipy 
-from scipy import optimize
+#import scipy 
+#from scipy import optimize
 
 
 m_e = constants.m_e                    # massa dell'elettrone
@@ -70,13 +70,15 @@ class Positrone:
 class sciame_elettromagnetico:
 
     """
-    classe che definisce lo sciame_elettromagnetico(E0, Ec, dEx0, s)
+    classe che definisce lo sciame_elettromagnetico(tipo_particella, E0, Ec, dEx0, s, X0)
     
     Parametri input:
-        E0 : energia iniziale della particella 
-        Ec : energia critica del materiale (sia per elettroni che positroni dato che possono variare ) 
+        tipo_particella : particella iniziale scelta dall'utente ('Fotone', 'Elettrone', 'Positrone')
+        E0 : energia iniziale della particella
+        Ec : energia critica del materiale (sia per elettroni che positroni dato che può variare ) 
         dEx0 : perdita per ionizzazione in una lunghezza di radiazione
         s: passo di avanzamento, espresso in frazioni di X_0 con 0<= s <= 1
+        X0 : lunghezza di radiazione del materiale
 
     Attributi:
     _E0
@@ -84,6 +86,7 @@ class sciame_elettromagnetico:
     _Ec_positroni
     _dEx0
     _s
+    _X0
     _tipo_particella : specifica il tipo di particella scelto dall'utente
     particelle : inserisce la particella iniziale specificandone l'energia
     energia_persa_per_step e numero_particelle_per_step servono per il conteggio delle particelle
@@ -103,8 +106,7 @@ class sciame_elettromagnetico:
         self.energie_persa_per_step = []
         self.numero_particelle_per_step = [] 
         self.array_passi = []
-        
-        
+            
     
     def simulazione_sciame(self):
         """
@@ -114,13 +116,12 @@ class sciame_elettromagnetico:
         dell'energia totale persa per ionizzazione.
 
         """
-
+        check = 0                                   # controllo per l'arresto della simulazione
         energia_ionizzazione_totale = 0             # energia persa per ionizzazione dopo l'intero processo 
         step = 0
         energia_particella = self._E0
-        somma = 0
-
-        check = 0                                    # condizione per l'arresto dello sciame 
+        
+                                 
         energie = self.energie_persa_per_step        # array contente le energie perse per step
         n_elettroni_totali = []                      # array contenente il numero di elettroni per step
         n_positroni_totali = []                      # array contenente il numero di positroni per step
@@ -129,12 +130,14 @@ class sciame_elettromagnetico:
         array_passi =  self.array_passi              # array contenente il numero di step
         array_distanze = []                          # array contenente le profondità relativa ad ogni step
         energia_corrente = self._E0 
-        array_energia_corrente = []                  # array contenente le energie correntiì
+        array_energia_corrente = []                  # array contenente l'energia corrente
+        b = [self._E0]                               # array contenente le energie di tutte le particelle
         
         
-
-        while energia_particella > 0:
-
+        
+            
+        while (energia_particella > 0):
+            controllo = []                           # lista per controllare l'arresto dello sciame
             step += 1                                # lo step viene incrementato di 1 
             distanza= step*self._s                   # calcolo della distanza percorsa
             array_passi.append(step)
@@ -164,7 +167,7 @@ class sciame_elettromagnetico:
 
                         """ 
                         in questo caso si controlla la seconda condizione sull'energia
-                        dell'elettrone, ovvero sulla possibilità di emissione di un fotone
+                        dell'elettrone, ovvero la possibilità di emissione di un fotone
 
                         """
                         
@@ -176,25 +179,32 @@ class sciame_elettromagnetico:
                             if (np.random.uniform() < probabilità):
                                 nuove_particelle.append({'tipo': 'Fotone', 'energia': nuova_energia/2})
                                 nuove_particelle.append({'tipo': 'Elettrone', 'energia': nuova_energia/2})
-                                somma += 2 
+                                
                                 n_fotoni +=1 
+                                b.append(nuova_energia/2)
+                                b.append(nuova_energia/2)
                             else:
                                 nuove_particelle.append({'tipo': 'Elettrone', 'energia': nuova_energia})
-                                somma +=1
+                                
+                                b.append(nuova_energia)
                                 
                         else:
-                            check = 1
+                            
+                            nuove_particelle.append({'tipo': 'Elettrone', 'energia': nuova_energia})
+                            b.append(nuova_energia)
                                         
                     else:
 
                         """
                         l'elettrone deve depositare per ionizzazione un valore 
-                        casuale all'interno dell'intervallo [0,E]
+                        casuale all'interno dell'intervallo [0,E].
+                        La particella deve poi essere esclusa dal computo.
                         """
 
                         energia_depositata = np.random.uniform(low = 0, high= energia_particella)
                         energia_persa_per_step += energia_depositata
-                        check = 1
+                        continue 
+                        
                          
                         
                        
@@ -214,27 +224,31 @@ class sciame_elettromagnetico:
 
                             nuove_particelle.append({'tipo': 'Elettrone', 'energia': energia_particella/2})
                             nuove_particelle.append({'tipo': 'Positrone', 'energia': energia_particella/2})
-                            somma += 2
+                            
                             n_elettroni += 1
                             n_positroni += 1
                             n_fotoni -= 1 
+                            b.append(energia_particella/2)
+                            b.append(energia_particella/2)
                         else:
                             nuove_particelle.append({'tipo': 'Fotone', 'energia': energia_particella})
-                            somma +=1 
-                    
+                            b.append(energia_particella)
+                            
                     else:
 
                         """ 
                         il fotone deposita per ionizzazione un valore casuale 
-                        all'interno dell'intervallo [0,E]
+                        all'interno dell'intervallo [0,E].
+                        La particella deve poi essere esclusa dal computo.
                         """
                         energia_depositata_gamma = np.random.uniform(low = 0, high=energia_particella)
                         energia_persa_per_step += energia_depositata_gamma
+                        continue
                         
-                        check = 1
+                        
                          
 
-                else: #tipo_particella == 'Positrone':
+                else: #tipo_particella == 'Positrone'
                     if energia_particella > self._dEx0*self._s:
                         
                         perdita_energia_positrone = self._dEx0*self._s
@@ -243,7 +257,7 @@ class sciame_elettromagnetico:
                        
                         """ 
                         in questo caso si controlla la seconda condizione sull'energia
-                        del positrone, ovvero sulla possibilità di emissione di un fotone
+                        del positrone, ovvero la possibilità di emissione di un fotone
                         """
                         
                         if nuova_energia > self._Ec_positroni:
@@ -254,32 +268,44 @@ class sciame_elettromagnetico:
                             if (np.random.uniform() < probabilità):
                                 nuove_particelle.append({'tipo': 'Fotone', 'energia': nuova_energia/2})
                                 nuove_particelle.append({'tipo': 'Positrone', 'energia': nuova_energia/2})
-                                somma += 2
+                                b.append(nuova_energia/2)
+                                b.append(nuova_energia/2)
                                 n_fotoni +=1 
                             else:
                                 nuove_particelle.append({'tipo': 'Positrone', 'energia': nuova_energia})
-                                somma += 1 
+                                b.append(nuova_energia)
+                                 
                         else:
-                            check = 1
+                            
+                            nuove_particelle.append({'tipo': 'Positrone', 'energia': nuova_energia})
+                            b.append(nuova_energia)
 
                     else:
 
                         """
                         il positrone deve depositare per ionizzazione un valore 
-                        casuale all'interno dell'intervallo [0,E]
+                        casuale all'interno dell'intervallo [0,E].
+                        La particella deve poi essere esclusa dal computo.
                         """
                         
                         energia_depositata_positrone = np.random.uniform(low = 0, high = energia_particella)
                         energia_persa_per_step += energia_depositata_positrone   
-                        check = 1
-                        
-                if check == 1:
-                    break
+                        continue
+                """
+                si controlla che non ci siano più particelle che possano depositare energia 
+                per poi arrestare lo sciame 
+
+                """
                 
-                        
-                
-            if check == 1:
-                break 
+                for i in b:
+                    if i > 0:
+                        controllo.append(1)
+
+
+            if len(controllo)==0:
+                check = 1
+            if check ==1:
+                break
                       
             
             """
@@ -299,7 +325,7 @@ class sciame_elettromagnetico:
             somma_particelle.append(n_elettroni+n_fotoni+n_positroni)
             array_energia_corrente.append(energia_corrente)
             
-            
+        
 
 
             
@@ -313,18 +339,18 @@ class sciame_elettromagnetico:
         print("L'energia residua alla fine del processo è : ", self._E0-energia_ionizzazione_totale, " MeV")
         print('------------------------------------------------')
         
-
+        
 
 
         console = Console()
 
         # Dati delle colonne
-        colonna1 = [ str(i) for i in range(step) ]
-        colonna2 = [ str(i) for i in n_elettroni_totali]
-        colonna3 = [ str(i) for i in n_fotoni_totali]
-        colonna4 = [ str(i) for i in n_positroni_totali]
-        colonna5 = [ str(i) for i in somma_particelle]
-        colonna6 = [ str(i) for i in energie]
+        colonna1 = [ str(i) for i in range(step-1) ]
+        colonna2 = [ str(i) for i in n_elettroni_totali[:-1]]
+        colonna3 = [ str(i) for i in n_fotoni_totali[:-1]]
+        colonna4 = [ str(i) for i in n_positroni_totali[:-1]]
+        colonna5 = [ str(i) for i in somma_particelle[:-1]]
+        colonna6 = [ str(i) for i in energie[:-1]]
 
         
 
@@ -341,7 +367,7 @@ class sciame_elettromagnetico:
         
 
         # Aggiunta dei dati alla tabella
-        for i in range(len(n_elettroni_totali)):
+        for i in range(len(n_elettroni_totali)-1):
             table.add_row(colonna1[i], colonna2[i], colonna3[i], colonna4[i], colonna5[i], colonna6[i])
 
         # Stampa della tabella
@@ -395,72 +421,16 @@ class sciame_elettromagnetico:
                 
                 plt.show()
             
-        
-            def test_function(x,X_0):
-                """
-                Funzion di fit per il numero di particelle ad ogni step:
-                    - x è l'array contenenti i passi (distanze percorse)
-                    - X_0 è la lunghezza di radiazione caratteristica del materiale
-                """
-                return 2**(x/X_0)
-            
-
-            # fit con gli array completi
-            params1, params_covariance1 = optimize.curve_fit(test_function, xdata=array_passi[:-1], ydata=somma_particelle)
-            fit_del_numero_di_particelle_completo= int(input("1 per visualizzare il fit del numero delle particelle per step. 0 altrimenti: "))
-            if (fit_del_numero_di_particelle_completo == 1):
-                plt.figure(figsize=[10,8])
-                plt.title("Fit numero particelle con $E_0$ = {:.0f} MeV, s = {:.3f}, $E_c(e^-)$ = {:.2f} MeV, $E_c(e^+)$={:.2f} MeV e $dEx_0$ = {:.2f} (MeV/m)".format(self._E0, self._s, self._Ec_elettroni,self._Ec_positroni, self._dEx0), c='darkred', fontsize = 10)  
-                plt.plot(array_passi[:-1], somma_particelle, "+", c='darkred', label = 'Data')
-                plt.plot(array_passi[:-1], test_function(array_passi[:-1], params1[0]), c='blue', label='Fit')
-                plt.legend(loc = 'upper left')
+            # grafico del numero di particelle ad ogni step
+            grafico_particelle_step_totali = int(input("1 per visualizzare l'andamento del numero di particelle ad ogni step. 0 altrimenti: "))
+            if grafico_particelle_step_totali == 1:
+                plt.figure(figsize = [10,8])
+                plt.title("Numero delle particelle con $E_0$ = {:.0f} MeV, s = {:.3f}, $E_c(e^-)$ = {:.2f} MeV, $E_c(e^+)$={:.2f} MeV e $dEx_0$ = {:.2f} (MeV/m)".format(self._E0, self._s, self._Ec_elettroni,self._Ec_positroni, self._dEx0), c='darkred', fontsize = 10) 
+                plt.plot(array_passi[:-1], somma_particelle, "+", label='# particelle totali', c='chocolate')
+                plt.plot(array_passi[:-1], somma_particelle, "--", c='forestgreen')
                 plt.xlabel('Numero di step')
                 plt.ylabel('Numero di particelle')
-                
-                plt.show()
-
-            # grafico fit con rapporti
-            # Valore funzione fit ottimizzata in corrispondneza degli step
-                
-            yfit = test_function(array_passi[:-1], params1[0])
-            """
-                Dato che il numero di particelle è il risultato di un conteggio, l'errore associato 
-                al risultato è dato dalla radice quadrata del numero di conteggi
-            """
-            
-            yerr = []
-            for numero in somma_particelle:
-                yerr.append(np.sqrt(numero))
-            grafico_fit_con_scarti = int(input("1 per visualizzare il grafico del fit con l'aggiunta dei rapporti. 0 altrimenti:")) 
-            if grafico_fit_con_scarti == 1:
-
-                # Grafico con due subplot
-
-                fig, ax = plt.subplots(2,1, figsize=[10,8], gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-                fig.subplots_adjust(hspace=0)
-
-                # Grafico subplot 0 (dati e funzione di fit)
-                ax[0].set_title('Fit Esponenziale $2^t$', fontsize=10, color='darkred')
-                ax[0].errorbar(array_passi[:-1],  somma_particelle,  yerr=yerr, color='darkred',fmt='o', 
-                            label='Data',capsize=5, ecolor ='gray', elinewidth = 1, capthick = 0.5 )
-                ax[0].plot(    array_passi[:-1], yfit,            color='blue' ,        label='Fit  $\sigma_y$')
-                ax[0].set_ylabel('Numero di particelle', fontsize=14)
-                ax[0].tick_params(axis="y", labelsize=14) 
-                ax[0].legend(fontsize=14, loc='upper left')
-                
-
-                # Grafico subplot 1 (rapporto dati / funzione di fit)
-                ax[1].errorbar(array_passi[:-1],  somma_particelle/yfit, yerr=yerr/yfit, fmt='o', color='darkred',
-                            capsize=5, ecolor ='gray', elinewidth = 1, capthick = 0.5 )
-                ax[1].axhline(1, color='blue') 
-                ax[1].set_xlabel('Numero di step', fontsize =14)
-                ax[1].set_ylabel('Dati/Fit',  fontsize =14)
-                ax[1].tick_params(axis="x",   labelsize=14) 
-                ax[1].tick_params(axis="y",   labelsize=14) 
-                #ax[1].set_ylim(0.5,1.5)       
-                #ax[1].set_yticks(np.arange(0.5, 1.51, 0.25))
-                ax[1].grid(True, axis='y')
-                
+                plt.legend(loc = 'upper right')
                 plt.show()
 
             # grafico dell'energia residua ad ogni step 
@@ -523,7 +493,7 @@ class sciame_elettromagnetico:
         """
         Metodo che esegue il confronto grafico per 6 simulazioni partendo da energie iniziali diverse.
         3 simulazioni per il materiale acqua  e 3 simulazioni per il silicato di bismuto.
-        Viene richiamato il metodo return array e veien riportato graficamente lo sviluppo dello sciame, ovvero:
+        Viene richiamato il metodo return array e viene riportato graficamente lo sviluppo dello sciame, ovvero:
             - numero di particelle ad ogni step
             - energia persa per ionizzazione ad ogni step
         """
@@ -570,7 +540,7 @@ class sciame_elettromagnetico:
 
             #simulazione 2 per acqua
             ax[0][0].plot(step2[:-1], num2, "--", c='steelblue')
-            ax[0][0].plot(step2[:-1], num2, "+", c='orange',label='$E_0$ = {:.2f} MeV'.format(E01))
+            ax[0][0].plot(step2[:-1], num2, "+", c='orange',label='$E_0$ = {:.2f} MeV'.format(E01))   
 
             # simulazione 3 per acqua
             ax[0][0].plot(step3[:-1], num3, "--", c='limegreen')
@@ -579,7 +549,7 @@ class sciame_elettromagnetico:
             
             ax[0][0].set_xlabel('Numero di step')
             ax[0][0].set_ylabel('Numero di particelle per H2O')
-            ax[0][0].legend(loc = 'upper left')
+            ax[0][0].legend(loc = 'upper right', fontsize =6)
             ax[0][0].grid(True)
 
             # simulazione 1 per acqua
@@ -597,7 +567,7 @@ class sciame_elettromagnetico:
             
             ax[0][1].set_xlabel('Numero di step')
             ax[0][1].set_ylabel('Energia depositata(MeV) per H2O')
-            ax[0][1].legend(loc = 'upper left')
+            ax[0][1].legend(loc = 'upper right', fontsize = 6)
             ax[0][1].grid(True)
 
             #--------------------------------------------------------------#
@@ -617,7 +587,7 @@ class sciame_elettromagnetico:
             
             ax[1][0].set_xlabel('Numero di step')
             ax[1][0].set_ylabel('Numero di particelle per BSO')
-            ax[1][0].legend(loc = 'upper left')
+            ax[1][0].legend(loc = 'upper right', fontsize = 6)
             ax[1][0].grid(True)
 
             # simulazione 1 per silicato di bismuto 
@@ -635,10 +605,107 @@ class sciame_elettromagnetico:
             #ax[1][1].set_title("Andamento dell'energia depositata per diverse energie iniziali")
             ax[1][1].set_xlabel('Numero di step')
             ax[1][1].set_ylabel('Energia depositata(MeV) per BSO')
-            ax[1][1].legend(loc = 'upper left')
+            ax[1][1].legend(loc = 'upper right', fontsize = 6)
             ax[1][1].grid(True)
         
             plt.show()
+
+            fig, ax = plt.subplots(2 , 2, figsize = [12,8])
+            fig.suptitle(" Confronto sviluppo longitudinale per diverse energie", c='darkred', fontsize = 10)
+            # simulazione 1 per acqua 
+            
+            ax[0][0].plot(step1[:-1], num1,'--', c='red',label='$E_0$ = {:.2f} MeV'.format(E00))
+            
+
+            #simulazione 2 per acqua
+            
+            ax[0][0].plot(step2[:-1], num2,'--', c='blue',label='$E_0$ = {:.2f} MeV'.format(E01))   
+
+            # simulazione 3 per acqua
+            
+            ax[0][0].plot(step3[:-1], num3,'--', c='limegreen',label='$E_0$ = {:.2f} MeV'.format(E02))
+
+            
+            ax[0][0].set_xlabel('Numero di step')
+            ax[0][0].set_ylabel('Numero di particelle per H2O')
+            ax[0][0].legend(loc = 'upper right', fontsize =6)
+            ax[0][0].grid(True)
+
+            # simulazione 1 per acqua
+            
+            ax[0][1].plot(step1[:-1], energia1,'--', c='red',label='$E_0$ = {:.2f} MeV'.format(E00))
+
+            #simulazione 2 per acqua
+            
+            ax[0][1].plot(step2[:-1], energia2,"--", c='blue',label='$E_0$ = {:.2f} MeV'.format(E01))
+
+            # simulazione 3 per acqua
+            
+            ax[0][1].plot(step3[:-1], energia3,"--", c='limegreen',label='$E_0$ = {:.2f} MeV'.format(E02))
+
+            
+            ax[0][1].set_xlabel('Numero di step')
+            ax[0][1].set_ylabel('Energia depositata(MeV) per H2O')
+            ax[0][1].legend(loc = 'upper right', fontsize = 6)
+            ax[0][1].grid(True)
+
+            #--------------------------------------------------------------#
+
+            # simulazione 1 per silicato di bismuto 
+            
+            ax[1][0].plot(step4[:-1], num4,'--', c='red',label='$E_0$ = {:.2f} MeV'.format(E00))
+
+            #simulazione 2 per silicato di bismuto 
+            
+            ax[1][0].plot(step5[:-1], num5,'--', c='blue',label='$E_0$ = {:.2f} MeV'.format(E01))
+
+            # simulazione 3 per silicato di bismuto 
+            
+            ax[1][0].plot(step6[:-1], num6,'--', c='limegreen',label='$E_0$ = {:.2f} MeV'.format(E02))
+
+            
+            ax[1][0].set_xlabel('Numero di step')
+            ax[1][0].set_ylabel('Numero di particelle per BSO')
+            ax[1][0].legend(loc = 'upper right', fontsize = 6)
+            ax[1][0].grid(True)
+
+            # simulazione 1 per silicato di bismuto 
+            
+            ax[1][1].plot(step4[:-1], energia4,'--', c='red',label='$E_0$ = {:.2f} MeV'.format(E00))
+
+            #simulazione 2 per silicato di bismuto 
+            
+            ax[1][1].plot(step5[:-1], energia5,'--', c='blue',label='$E_0$ = {:.2f} MeV'.format(E01))
+
+            # simulazione 3 per silicato di bismuto 
+            
+            ax[1][1].plot(step6[:-1], energia6, '--', c='limegreen',label='$E_0$ = {:.2f} MeV'.format(E02))
+
+            #ax[1][1].set_title("Andamento dell'energia depositata per diverse energie iniziali")
+            ax[1][1].set_xlabel('Numero di step')
+            ax[1][1].set_ylabel('Energia depositata(MeV) per BSO')
+            ax[1][1].legend(loc = 'upper right', fontsize = 6)
+            ax[1][1].grid(True)
+        
+            plt.show()
+
+
+
+
+        
+
+
+             
+
+
+
+
+
+
+
+
+
+
 
 
 
