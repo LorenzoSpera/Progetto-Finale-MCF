@@ -18,7 +18,7 @@
 # può cambiare liberamente i valori ed eseguire varie    #
 # simulazioni. Nella parte finale si trova il confronto  #
 # per lo sviluppo dello sciame a partire da diversi      #
-# valori dell'energia iniziale.                           #
+# valori dell'energia iniziale.                          #
 ##########################################################
 import numpy as np 
 import sys, os 
@@ -70,7 +70,7 @@ dei risultati più veloce o, in maniera alternativa, si possono cambiare liberam
 """
 sciame_utente = sciame_elettromagnetico(tipo_particella = tipo_particella_iniziale, E0 = energia_utente, Ec_elettroni=energia_critica_elettroni_bso
                                         ,Ec_positroni=energia_critica_positroni_bso
-                                        ,dEx0 = energia_utente/3500, s = passo_utente, X0 = lunghezza_radiazione_h2O)
+                                        ,dEx0 = energia_utente/4000, s = passo_utente, X0 = lunghezza_radiazione_h2O)
 
 sciame1_bso  = sciame_elettromagnetico(tipo_particella = tipo_particella_iniziale, E0 = energia_utente, Ec_elettroni=energia_critica_elettroni_bso
                                         ,Ec_positroni=energia_critica_positroni_bso
