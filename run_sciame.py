@@ -64,9 +64,7 @@ energia_critica_positroni_bso = 10.32   # in Mev
 
 """
 Per la simulazione sciame utente, si è scelto un valore della perdita di energia molto più basso rispetto a quello dei materiali per 
-effettuare un confronto con questi. In ogni caso, essendo anche il passo relativamente piccolo lo sviluppo dello sciame richiede 
-più tempo rispetto alle altre simulazioni. Una volta verificato il funzionamento tale simulazione può essere commentata per un'analisi 
-dei risultati più veloce o, in maniera alternativa, si possono cambiare liberamente i parametri.
+effettuare un confronto con questi.
 """
 sciame_utente = sciame_elettromagnetico(tipo_particella = tipo_particella_iniziale, E0 = energia_utente, Ec_elettroni=energia_critica_elettroni_bso
                                         ,Ec_positroni=energia_critica_positroni_bso
