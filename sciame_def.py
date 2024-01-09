@@ -173,7 +173,7 @@ class sciame_elettromagnetico:
                         
                         if nuova_energia > self._Ec_elettroni:
 
-                            probabilità = 1-np.exp(-self._s) #-self._s
+                            probabilità = 1-np.exp(-self._s) #-self._s/self_X0
                             
                             if (np.random.uniform() < probabilità):
                                 nuove_particelle.append({'tipo': 'Fotone', 'energia': nuova_energia/2})
@@ -212,7 +212,7 @@ class sciame_elettromagnetico:
                     if energia_particella > 2* m_e*c**2:
 
                         n_fotoni +=1 
-                        probabilità_gamma = 1 - np.exp(-(7/9)*self._s)  #-self._s
+                        probabilità_gamma = 1 - np.exp(-(7/9)*self._s)  #-self._s/self._X0
                         
                         if (np.random.uniform() < probabilità_gamma):
 
@@ -262,7 +262,7 @@ class sciame_elettromagnetico:
                         if nuova_energia > self._Ec_positroni:
 
                             n_positroni += 1 
-                            probabilità = 1-np.exp(-self._s)  #-self._s
+                            probabilità = 1-np.exp(-self._s)  #-self._s/self._X0
 
                             if (np.random.uniform() < probabilità):
                                 nuove_particelle.append({'tipo': 'Fotone', 'energia': nuova_energia/2})
