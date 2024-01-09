@@ -21,8 +21,8 @@ del file sciame_def.py')```.Per eseguire la simulazione si può procedere come s
 * si scelgono i parametri della simulazione, tipo della particella iniziale, 
     energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
     passo di avanzamento  e lunghezza di radiazione del materiale.
-* nello script è già presente una simulazione per entrambi i materiali (acqua e silicato di bismuto) con i rispettivi valori 
-    ricavati dal particle data group.
+* nella parte iniziale dello script sono già presenti due simulazioni: una per i due materiali (acqua e silicato di bismuto) con valori
+ricavati dal particle data group e l'altra con dei valori diversi per effettuare un confronto.
 * l'utente può liberamente cambiare tali parametri.
 * una volta eseguita la simulazione viene stampata l'energia persa per ionizzazione dopo l'intero processo e 
     le grandezze richieste vengono riportate in una tabella. 
@@ -30,7 +30,6 @@ del file sciame_def.py')```.Per eseguire la simulazione si può procedere come s
     fenomeno fisico. Viene specificato il contenuto di ogni grafico e viene chiesto all'utente se vuole visualizzarlo
     inserendo il rispettivo comando indicato.
 ### Analisi dei risultati
-Nello script _sciame_def.py_ sono già presenti alcune simulazioni con dei valori specifici.
 Nell'ultima parte è poi presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
 si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati eccetto quando viene esplicitamente
 citato il confronto tra le simulazioni.
