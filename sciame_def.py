@@ -25,8 +25,7 @@ from scipy import constants
 from rich.console import Console
 from rich.table import Table
 import matplotlib.pyplot as plt
-#import scipy 
-#from scipy import optimize
+
 
 
 m_e = constants.m_e                    # massa dell'elettrone
