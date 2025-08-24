@@ -1,49 +1,50 @@
-# Progetto-Finale-MCF
+# Final Project – MCF
 
-## Indice
-1. [Contenuto](#contenuto)
-2. [Esecuzione simulazione](#esecuzionesimulazione)
-3. [Analisi dei risultati](#analisirisultati)
-4. [Installazione pacchetti](#installazione)
+## Index
+1. [Content](#content)
+2. [Running the Simulation](#running-the-simulation)
+3. [Analysis of Results](#analysis-of-results)
+4. [Package Installation](#package-installation)
 
-### Contenuto
+### Content
 
-Repository contenente il progetto finale del corso di Metodi Computazionali per la Fisica (2023-2024) consistente nella simulazione
-di uno sciame elettromagnetico partendo dal modello di Rossi. All'interno del repository sono presenti due script python: _sciame_def.py_
-e _run_sciame.py_. Nel primo si trova la defizione delle varie classi usate per la realizzazione della simulazione; ovvero si hanno le 
-classi che definiscono le particelle e una classe sciame in cui viene realizzata la simulazione secondo il modello richiesto. 
+Repository containing the final project of the course *Computational Methods for Physics (2023–2024)*, consisting of the simulation of an electromagnetic shower based on the Rossi model.  
+Inside the repository there are two Python scripts: _sciame_def.py_ and _run_sciame.py_.  
+The first contains the definition of the various classes used to build the simulation; that is, the particle classes and a shower class in which the simulation is carried out according to the required model.  
 
-### Esecuzione simulazione 
+### Running the Simulation  
 
-Il risultato della simulazione e la presentazione dei risultati si trovano nel secondo file. Il primo script viene importato nel secondo
-tramite la libreria _sys_. Una volta scaricati entrambi i file il primo viene importato nel secondo con il comando ```sys.path.append('path
-del file sciame_def.py')```.Per eseguire la simulazione si può procedere come segue:
-* si scelgono i parametri della simulazione, tipo della particella iniziale, 
-    energia della particella, energia critica dei materiali, perdita di energia per ionizzazione, 
-    passo di avanzamento  e lunghezza di radiazione del materiale.
-* nella parte iniziale dello script sono già presenti due simulazioni: una per i due materiali (acqua e silicato di bismuto) con valori
-ricavati dal particle data group e l'altra con dei valori diversi per effettuare un confronto.
-* l'utente può liberamente cambiare tali parametri.
-* una volta eseguita la simulazione viene stampata l'energia persa per ionizzazione dopo l'intero processo e 
-    le grandezze richieste vengono riportate in una tabella. 
-* tali grandezze vengono studiate anche graficamente con l'aggiunta di alcuni grafici per analizzare a pieno il
-    fenomeno fisico. Viene specificato il contenuto di ogni grafico e viene chiesto all'utente se vuole visualizzarlo
-    inserendo il rispettivo comando indicato.
-### Analisi dei risultati
-Nell'ultima parte è poi presente il confronto tra simulazioni con energie diverse per i materiali. Per velocizzare la visualizzazione
-si consiglia di inserire 0 ogni volta che viene chiesto se si vogliono visualizzare i risultati eccetto quando viene esplicitamente
-citato il confronto tra le simulazioni.
-Nella repository è inoltre presente un file .pdf che mi è stato utile nella realizzazione della simulazione (per tenere conto
-dei vari punti) e soprattutto nel confronto dei risultati ottenuti. Il file delinea la struttura della simulazione e descrive i
-risultati ottenuti per varie simulazioni, concentrando la trattazione sulla sensibilità della simulazione rispetto alle grandezze 
-e i parametri che possono essere variati. Dato che il codice è stato aggiornato, per effettuare un confronto con i nuovi risultati, 
-è stata aggiunta una sezione al file .pdf rimuovendone due relative alla simulazione del codice non aggiornato che riporava
-alcune inconsistenze.
+The result of the simulation and the presentation of the results are in the second file.  
+The first script is imported into the second through the _sys_ library.  
+Once both files are downloaded, the first is imported into the second with the command:  
+python
+import sys
+sys.path.append("path/to/sciame_def.py")
+```
 
-### Installazione pacchetti
+To run the simulation, you can proceed as follows:
 
-Per la visualizzazione delle grandezze richieste è stata utilizzata la libreria _rich_ di Python. Se tale libreria non dovesse già essere installata
-ci si sposti nella cartella di lavoro e si proceda con l'installazione da terminale secondo il seguente comando:
+Choose the simulation parameters: type of the initial particle, particle energy, critical energy of the materials, ionization energy loss, step size, and radiation length of the material.
+In the initial part of the script there are already two simulations: one for the two materials (water and bismuth silicate) with values taken from the Particle Data Group, and another with different values for comparison.
+The user is free to change these parameters.
+Once the simulation is executed, the ionization energy lost after the entire process is printed and the requested quantities are reported in a table.
+These quantities are also studied graphically, with additional plots to fully analyze the physical phenomenon. The content of each plot is specified, and the user is asked whether they want to view it by entering the indicated command.
+
+### Analysis of the results 
+
+
+In the final part, there is a comparison between simulations with different energies for the materials.
+To speed up visualization, it is recommended to enter 0 whenever the program asks whether to display results, except when it explicitly refers to the comparison between simulations.
+
+The repository also contains a .pdf file that was useful for building the simulation (to keep track of the various points) and especially for comparing results. The file outlines the structure of the simulation and describes the results obtained for different runs, focusing on the sensitivity of the simulation to quantities and parameters that can be varied.
+Since the code has been updated, a section was added to the .pdf file to compare with the new results, while two sections related to the outdated version of the simulation (which contained some inconsistencies) were removed.
+
+
+### Package Installation
+
+For displaying the requested quantities, the Python library rich was used.
+If this library is not already installed, move to the working directory and install it from the terminal with the following command:
+
 ```
 pip install rich
 ```
