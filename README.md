@@ -17,6 +17,8 @@ The first contains the definition of the various classes used to build the simul
 The result of the simulation and the presentation of the results are in the second file.  
 The first script is imported into the second through the _sys_ library.  
 Once both files are downloaded, the first is imported into the second with the command:  
+
+```
 python
 import sys
 sys.path.append("path/to/sciame_def.py")
@@ -30,7 +32,7 @@ The user is free to change these parameters.
 Once the simulation is executed, the ionization energy lost after the entire process is printed and the requested quantities are reported in a table.
 These quantities are also studied graphically, with additional plots to fully analyze the physical phenomenon. The content of each plot is specified, and the user is asked whether they want to view it by entering the indicated command.
 
-### Analysis of the results 
+### Analysis of Results
 
 
 In the final part, there is a comparison between simulations with different energies for the materials.
@@ -48,4 +50,4 @@ If this library is not already installed, move to the working directory and inst
 ```
 pip install rich
 ```
-Per l'installazione si richiede una versione di Python pari o superiore alla 3.7.
+Per l'installazione si richiede una versione di Python pari o superiore alla 3.7
